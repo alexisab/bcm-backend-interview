@@ -30,18 +30,20 @@ app
     .use(router.routes())
     .use(router.allowedMethods())
 
+const server = require('http').createServer(app.callback())
+
 module.exports = {
     listen: () => new Promise((resolve, reject) => {
         const port = process.env.API_PORT || 3000
 
-        app.listen(port, error => {
+        server.listen(port, error => {
             if (error) {
                 reject(error)
             }
 
             logger.info(`Listenning on port ${port} ...`)
 
-            resolve(app)
+            resolve(server)
         })
     }),
 

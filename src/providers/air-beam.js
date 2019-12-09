@@ -17,7 +17,7 @@ module.exports = {
                 const [price, departure_time, arrival_time] = line.split(',').slice(1)
 
                 return {
-                    price,
+                    price: Number(price),
                     departure_time,
                     arrival_time,
                 }

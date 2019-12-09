@@ -7,7 +7,7 @@ module.exports = {
         },
     },
     formatResponse: data => data.map(({ price, departure_time, arrival_time }) => ({
-        price,
+        price: Number(price),
         departure_time,
         arrival_time,
     })),

@@ -39,10 +39,14 @@ module.exports = {
     globals: {
         Map: true,
         Promise: true,
+
+        describe: true,
+        it: true
     },
 
     env: {
         node: true,
+        mocha: true,
     },
 
     rules,
