@@ -37,6 +37,7 @@ module.exports = {
     },
 
     globals: {
+        Map: true,
         Promise: true,
     },
 

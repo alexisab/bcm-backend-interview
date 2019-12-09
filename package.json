@@ -14,14 +14,18 @@
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.2.1",
     "koa-helmet": "^5.2.0",
+    "koa-ratelimit": "^4.2.1",
     "lodash": "^4.17.15",
     "node-cache": "^5.1.0",
     "pino": "^5.14.0"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "eslint": "^6.7.2",
+    "mocha": "^6.2.2",
     "nodemon": "^2.0.1",
-    "pino-pretty": "^3.5.0"
+    "pino-pretty": "^3.5.0",
+    "supertest": "^4.0.2"
   },
   "scripts": {
     "start": "node src/index.js",

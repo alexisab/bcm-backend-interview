@@ -1,6 +1,7 @@
 const Koa = require('koa')
 const pino = require('pino')
 const rTracer = require('cls-rtracer')
+const ratelimit = require('koa-ratelimit')
 
 const middlewares = require('./middlewares')
 
@@ -21,6 +22,11 @@ app
     .use(require('koa-bodyparser')({ enableTypes: ['json'] }))
     .use(rTracer.koaMiddleware())
     .use(middlewares.httpLogger({ logger }))
+    .use(ratelimit({
+        driver: 'memory',
+        db: new Map(),
+        max: 10, // We can increase this setting if it's too restrictive
+    }))
     .use(middlewares.error)
     .use(router.routes())
     .use(router.allowedMethods())
