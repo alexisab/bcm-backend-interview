@@ -1,3 +1,4 @@
+// Simple error middleware
 module.exports = async (ctx, next) => {
     try {
         await next()

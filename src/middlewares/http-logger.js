@@ -1,6 +1,9 @@
 const _ = require('lodash')
 const rTracer = require('cls-rtracer')
 
+
+// HTTP logger that logs request and response.
+// It automatically includes a unique request ID to track all related log lines for the same request.
 module.exports = ({ logger }) => {
     return async (ctx, next) => {
         const requestId = rTracer.id()
