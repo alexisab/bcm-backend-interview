@@ -6,9 +6,21 @@ module.exports = {
             'X-API-Key': 'dd764f40',
         },
     },
-    responseMap: {
-        price: 'p',
-        departure_time: 'departure_time',
-        arrival_time: 'arrival_time',
+    // This is an extremly simple CSV "parser"
+    // It transforms CSV string into an array of objects
+    // This function induces that the data is well formatted, we should use a more robust CSV parser
+    formatResponse: data => {
+        return data
+            .substring(data.indexOf('\n') + 1) // we remove the header
+            .split('\n')
+            .map(line => {
+                const [id, price, departure_time, arrival_time] = line.split(',')
+
+                return {
+                    price,
+                    departure_time,
+                    arrival_time
+                }
+            })
     },
 }

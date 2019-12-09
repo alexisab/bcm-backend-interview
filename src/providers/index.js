@@ -17,11 +17,7 @@ module.exports = fs
             name: Joi.string().required(),
             apiEndpoint: Joi.string().uri().required(),
             requestOptions: Joi.object().optional(),
-            responseMap: Joi.object({
-                price: Joi.string().required(),
-                departure_time: Joi.string().required(),
-                arrival_time: Joi.string().required(),
-            }).required(),
+            formatResponse: Joi.function().required(),
         }))
 
         return provider

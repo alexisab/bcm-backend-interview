@@ -36,10 +36,10 @@ module.exports = {
         sourceType: 'module',
     },
 
-    // globals: {
-    //     require: true,
-    //     Promise: true,
-    // },
+    globals: {
+        Promise: true,
+    },
+
     env: {
         node: true,
     },

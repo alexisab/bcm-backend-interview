@@ -6,9 +6,9 @@ module.exports = {
             'X-API-Key': 'dd764f40',
         },
     },
-    responseMap: {
-        price: 'price',
-        departure_time: 'dtime',
-        arrival_time: 'atime',
-    },
+    formatResponse: data => data.map(({ price, dtime, atime }) => ({
+        price,
+        departure_time: dtime,
+        arrival_time: atime,
+    })),
 }
