@@ -32,8 +32,15 @@ module.exports = provider => new Promise((resolve, reject) => {
         url: provider.apiEndpoint,
 
         ...(provider.requestOptions || {}),
+
+        validateStatus: () => true,
     })
-        .then(({ data }) => {
+        .then(({ status, data }) => {
+            if (status !== 200) {
+                // If a provider fails we don't cache the result and returns an empty array
+                return resolve([])
+            }
+
             const formatedData = provider
                 .formatResponse(data)
                 .map(data => ({ ...data, provider: provider.name  }))
