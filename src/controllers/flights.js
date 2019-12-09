@@ -10,12 +10,6 @@ router
             providers.map(fetcher),
         )
 
-        console.log(_(providerData)
-            .flatten()
-            .sortBy(['price'])
-            .take(50)
-            .value())
-
         ctx.body = _(providerData)
             .flatten()
             .sortBy(['price'])

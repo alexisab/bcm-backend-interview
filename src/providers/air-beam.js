@@ -14,12 +14,12 @@ module.exports = {
             .substring(data.indexOf('\n') + 1) // we remove the header
             .split('\n')
             .map(line => {
-                const [id, price, departure_time, arrival_time] = line.split(',')
+                const [price, departure_time, arrival_time] = line.split(',').slice(1)
 
                 return {
                     price,
                     departure_time,
-                    arrival_time
+                    arrival_time,
                 }
             })
     },

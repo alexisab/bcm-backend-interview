@@ -26,16 +26,24 @@ app
     .use(router.allowedMethods())
 
 
-const port = process.env.API_PORT || 3000
+async function main() {
+    // Here we can open do several things before the server start
+    // like opening a connection to a database
 
-app.listen(port, error => {
-    if (error) {
-        throw error
-    }
+    // await db.connect()
 
-    logger.info(`Listening on port ${port} ...`)
-})
+    const port = process.env.API_PORT || 3000
 
+    app.listen(port, error => {
+        if (error) {
+            throw error
+        }
+
+        logger.info(`Listening on port ${port} ...`)
+    })
+}
+
+main()
 
 process.on('uncaughtException', pino.final(logger, (err, finalLogger) => {
     finalLogger.fatal(err, 'uncaughtException')

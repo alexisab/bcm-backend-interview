@@ -20,11 +20,11 @@ module.exports = provider => new Promise((resolve, reject) => {
     // We first check if the value is cached
     const inCache = cache.get(provider.name)
     if (inCache) {
-        logger.info({ requestId }, 'Data were cached')
+        logger.debug({ requestId }, 'Data were cached')
         return resolve(inCache)
     }
 
-    logger.info({ requestId }, "Data weren't cached, fetching from api endpoint")
+    logger.debug({ requestId }, "Data weren't cached, fetching from api endpoint")
 
     // If it's not yet cached we fetch flights by calling the endpoint
     axios({
