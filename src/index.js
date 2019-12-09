@@ -46,3 +46,5 @@ process.on('unhandledRejection', pino.final(logger, (err, finalLogger) => {
     finalLogger.fatal(err, 'unhandledRejection')
     process.exit(1)
 }))
+
+module.exports = app
